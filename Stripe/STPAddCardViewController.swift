@@ -129,7 +129,17 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
     private var doneItem: UIBarButtonItem?
     private var cardHeaderView: STPSectionHeaderView?
     @available(iOS 13, macCatalyst 14, *)
-    private lazy var cardScanner: STPCardScanner? = nil
+    private var cardScanner: STPCardScanner? {
+        get {
+            _cardScanner as? STPCardScanner
+        }
+        set {
+            _cardScanner = newValue
+        }
+    }
+
+    /// Storage for `cardScanner`.
+    private var _cardScanner: NSObject? = nil
     @available(macCatalyst 14, *)
     private lazy var scannerCell: STPCardScannerTableViewCell? = nil
 
